@@ -1,6 +1,6 @@
-###PING###
+###PING
 
-##Telecommunications Software##
+##Telecommunications Software
 
 The bash script allows to generate a file "result.txt" which response time of the ping command.
 Then, the python script gets these times and create table. 
