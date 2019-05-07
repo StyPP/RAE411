@@ -47,7 +47,7 @@ Execution
 """
 
 # recieve message
-host = "192.168.43.105"
+host = "192.168.43.19"
 port = 6678
 buf = 1024
 addr = (host, port)
