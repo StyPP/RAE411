@@ -1,4 +1,8 @@
-The bash script allows to generate a file "result.txt" which response time of the ping command.
+#Countries
+
+The goal of this project is to received ping command from different countries and analysed them.
+
+The bash script allows to generate a file "result.txt" which is the response time of the ping command.
 Then, the python script gets these times and create table. 
 To finish, the average, the standard deviation and the variance are computed.
 The histogram and boxplot are also generated.
