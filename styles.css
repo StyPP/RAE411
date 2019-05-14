@@ -90,7 +90,7 @@ div , footer {
 .container {
 	max-width: 1100px;
 	height: auto;
-	margin: 60px auto;
+    margin: auto;
 }
 
 .hero {
@@ -149,7 +149,7 @@ h1.name {
 }
 
 .list-card {
-	margin: 30px 0;
+	margin: 20px 0;
 }
 
 .list-card .exp , .list-card div{
@@ -190,7 +190,6 @@ h1.name {
 .cards {
 	max-width: 1120px;
 	display: block;
-	margin-top: 280px;
 }
 
 .card {

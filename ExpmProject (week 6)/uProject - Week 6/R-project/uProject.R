@@ -10,7 +10,7 @@ begin <- 0
 end <- 200
 color <- "red"
 
-a <- matrix(c(-12, 12, 3, -3), nbccol_lines, nbccol_lines)
+a <- matrix(c(-3, 3, 5, -5), nbccol_lines, nbccol_lines)
 
 #-------------------------------------------------------------------------------
 
