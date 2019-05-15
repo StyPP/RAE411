@@ -371,9 +371,6 @@ li .description {
 		padding: 15px;
 		margin: 0px auto;
 	}
-	.cards {
-		margin-top: 250px;
-	}
 }
 
 @media(max-width: 768px){
