@@ -1,4 +1,4 @@
-#Ping
+# Ping
 
 The goal of this project is to have the average, the standard deviation, the minimum and the maximum of ping request.
 
