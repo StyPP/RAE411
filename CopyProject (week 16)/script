@@ -1,0 +1,38 @@
+#$1 the type, r for random or something else for zero
+end=20
+nbtimes=4
+
+rm time
+
+if [ $1 == 'r' ]
+    then type='urandom'
+else
+    type="zero"
+fi
+
+for ((j=0; j<$nbtimes; j++))
+do
+    for ((i=0; i<$end; i++))
+    do
+      head -c ${i}MB /dev/${type} > test${i}MB${type}
+    done
+    
+    for ((i=0; i<$end; i++))
+    do
+        time="$(sh -c "time cp test${i}MB${type} test${i}MB${type}copy" 2>&1)"
+        newtime=`echo "$time"`
+        t=`echo $newtime | cut -d ' ' -f 2`
+        m=`echo $t | cut -d 'm' -f 1`
+        s=`echo $t | cut -d 'm' -f 2 | cut -d 's' -f 1`
+        nt=$(bc <<< "scale=3;$m * 60 + $s")
+        echo "0${nt}" >> time
+    done
+    
+    for ((i=0; i<$end; i++))
+    do
+        rm test${i}MB${type}
+        rm test${i}MB${type}copy
+    done
+done
+
+echo "END"
