@@ -1,0 +1,15 @@
+nb=20
+n=0
+while nc -l 3000 > "$n".txt 
+do
+    n=$((n+1))
+    if [ $n == $nb ]
+    then
+        break
+    fi
+done
+
+for((i=0; i<$n;i++))
+do
+    rm "$i".txt
+done

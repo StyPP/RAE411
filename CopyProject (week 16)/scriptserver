@@ -1,17 +1,13 @@
 #$1 the type, r for random or something else for zero
 end=20
-nbtimes=4
 
-rm time
+rm timeserver
 
-if [ "$1" == 'r' ]
+if [ $1 == 'r' ]
     then type='urandom'
 else
     type="zero"
 fi
-
-for ((j=0; j<$nbtimes; j++))
-do
     for ((i=0; i<$end; i++))
     do
       head -c ${i}MB /dev/${type} > test${i}MB${type}
@@ -19,21 +15,19 @@ do
     
     for ((i=0; i<$end; i++))
     do
-        time=$( { time cp test${i}MB${type} test${i}MB${type}copy; } 2>&1)
+        time=$( { time yes| nc -q 0 localhost 3000 < test${i}MB${type}; } 2>&1)
         newtime=`echo "$time"`
         t=`echo $newtime | cut -d ' ' -f 2`
         m=`echo $t | cut -d 'm' -f 1`
         s=`echo $t | cut -d 'm' -f 2 | cut -d 's' -f 1`
         s=`echo "$s" | tr , .`
-        nt=`awk '{printf "%.5f\n", $1*60+$2}' <<<"$m $s"`
-        echo "${nt}" >> time
+        nt=`awk '{printf "%.5f\n", $1*60+$2}' <<< "$m $s"`
+       echo "${nt}" >> timeserver
     done
     
-    for ((i=0; i<$end; i++))
-    do
-        rm test${i}MB${type}
-        rm test${i}MB${type}copy
+for ((i=0; i<$end; i++))
+do
+       rm test${i}MB${type}
     done
-done
 
 echo "END"
